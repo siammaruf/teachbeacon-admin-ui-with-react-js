@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --bs-tb-nav-hover-color: #ececec;
+  --bs-tb-nav-active-color: #f5f5f5;
+  --bs-tb-sidebar-width: 250px;
+  --bs-tb-loader-bg-color: #0d6efd;
+}
+
+// Common Styles
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-5 {
+  margin-left: 5px;
+}
+
+.tb-transition {
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.show-navbar {
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  @extend .tb-transition;
+}
+
+.close-btn {
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+  }
+}
+
+// Loading Animation
+$colors:#2196F3,
+        #03A9F4,
+        #00BCD4,
+        #009688,
+        #4CAF50,
+        #8BC34A,
+        #CDDC39,
+        #FFEB3B;
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  height: 40px;
+  width: 40px;
+  transform: translate(-50%, -50%);
+}
+
+[class^="ball-"]{
+  position: absolute;
+  display: block;
+  left: 30px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  transition: all 0.5s;
+  animation: circleRotate 4s both infinite;
+  transform-origin: 0 250% 0;
+}
+
+@keyframes circleRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1440deg);
+  }
+}
+
+@for $i from 1 through 8 {
+  .ball-#{$i} {
+    z-index: -#{$i};
+    background-color: nth($colors, $i);
+    animation-timing-function: cubic-bezier(0.5, 0.3 * $i, 0.9, 0.9);
+  }
+}
+
+.top-loading-animation{
+  //display: none;
+  .loading-bar{
+    @extend .tb-transition;
+    background: var(--bs-tb-loader-bg-color);
+    background: linear-gradient(90deg, rgba(13,110,253,1) 0%, rgba(13,240,253,1) 63%, rgba(0,255,128,1) 100%);
+  }
+  overflow: hidden;
+}

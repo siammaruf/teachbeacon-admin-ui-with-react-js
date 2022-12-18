@@ -1,0 +1,14 @@
+.main-content{
+  padding-left: 250px;
+  .page-title-area{
+    h1{
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  }
+}
+
+// Import Main Content Styles
+@import "courses";
